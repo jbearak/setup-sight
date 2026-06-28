@@ -48,8 +48,8 @@ while [ "$#" -gt 0 ]; do
 done
 
 asset="${url##*/}"
-tag="${url%/download/*}"
-tag="${tag##*/}"
+tag_and_asset="${url#*/download/}"
+tag="${tag_and_asset%%/*}"
 source="${SETUP_SIGHT_TEST_RELEASES}/${tag}/${asset}"
 test -f "$source" || {
   echo "missing fake release asset: $source" >&2
@@ -71,7 +71,7 @@ run_install() {
     RUNNER_ARCH="$arch" \
     RUNNER_TEMP="$test_root/tmp-${os}-${arch}" \
     GITHUB_PATH="$github_path" \
-    bash "$repo_root/setup-sight.sh"
+    bash "$repo_root/setup-sight.sh" >&2
   local installed_dir
   installed_dir="$(tail -n 1 "$github_path")"
   test -n "$installed_dir" || fail "GITHUB_PATH was not updated for $os/$arch"
