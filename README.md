@@ -14,6 +14,13 @@ Sight also powers editor features through the Language Server Protocol:
 diagnostics, completion, hover, go-to-definition, and other code intelligence
 use the same static scope model that `sight check` runs headlessly.
 
+Sight's sibling project [Raven](https://github.com/jbearak/raven) provides the
+same static-analysis and language-server model for R. Together, Sight and Raven
+bring cross-file navigation, error detection, and code intelligence to two
+languages widely used in social science research; `setup-sight` and
+[`setup-raven`](https://github.com/jbearak/setup-raven) make their headless CLI
+checks easy to install in CI.
+
 ## Why this action exists
 
 Sight publishes Bun-compiled binaries on
