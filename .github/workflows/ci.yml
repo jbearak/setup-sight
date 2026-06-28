@@ -9,4 +9,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: bash tests/setup-sight-test.sh
+      - name: Syntax check
+        run: |
+          bash -n setup-sight.sh
+          bash -n tests/setup-sight-test.sh
+      - name: Unit tests
+        run: bash tests/setup-sight-test.sh
+
+  smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-15
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          version: latest
+      - run: sight --version
