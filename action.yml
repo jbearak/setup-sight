@@ -1,0 +1,18 @@
+name: Setup Sight
+description: Install the Sight CLI from prebuilt GitHub Release binaries.
+
+inputs:
+  version:
+    description: Sight version to install. Use "latest" or a release tag.
+    required: false
+    default: latest
+
+runs:
+  using: composite
+  steps:
+    - name: Install Sight
+      shell: bash
+      env:
+        SIGHT_VERSION: ${{ inputs.version }}
+        SIGHT_RELEASE_REPOSITORY: jbearak/sight
+      run: bash "$GITHUB_ACTION_PATH/setup-sight.sh"
