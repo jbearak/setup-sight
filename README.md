@@ -45,15 +45,7 @@ subcommands; your workflow controls which paths and flags to check.
 
 ## Supported runners
 
-The action supports the runner targets published by Sight:
-
-- Linux x64
-- Linux ARM64
-- Windows x64
-- Windows ARM64
-- macOS ARM64
-
-macOS x64 is not supported because Sight does not publish a macOS x64 binary.
+macOS, Windows, and Linux runners.
 
 ## License
 
