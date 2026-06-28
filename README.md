@@ -3,10 +3,16 @@
 A GitHub Action that installs the [Sight](https://github.com/jbearak/sight) CLI
 from prebuilt release binaries.
 
-**Sight** is a Language Server Protocol implementation and static analyzer for
-the Stata programming language. It provides editor features such as diagnostics,
-completion, hover, go-to-definition, and a standalone `sight` CLI for use in
-CI and other editor integrations.
+**Sight** is a static analyzer for the Stata programming language. It reads
+Stata projects without running them, follows `do`/`run`/`include` chains, and
+flags issues such as undefined macros, used-before-defined references, and
+cross-file path problems. In CI, `sight check` gives Stata projects the kind of
+fast, side-effect-free pre-merge check that other language ecosystems take for
+granted.
+
+Sight also powers editor features through the Language Server Protocol:
+diagnostics, completion, hover, go-to-definition, and other code intelligence
+use the same static scope model that `sight check` runs headlessly.
 
 ## Why this action exists
 
@@ -30,7 +36,7 @@ subcommands; your workflow controls which paths and flags to check.
 - uses: jbearak/setup-sight@v1
   with:
     version: latest
-- run: sight --version
+- run: sight check
 ```
 
 Pin a release tag for reproducible builds:
