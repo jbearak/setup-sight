@@ -39,17 +39,9 @@ subcommands; your workflow controls which paths and flags to check.
 - run: sight check
 ```
 
-Pin a release tag for reproducible builds:
-
-```yaml
-- uses: jbearak/setup-sight@v1
-  with:
-    version: v0.8.4
-```
-
 ## Inputs
 
-- `version` - `latest` (default) or a Sight release tag such as `v0.8.4`.
+- `version` - `latest` (default) or a Sight release tag.
 
 ## Supported runners
 
