@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ "${1:-}" = "--version" ]; then
+  echo "sight 0.0.0-test"
+  exit 0
+fi
+
+echo "unexpected fake sight args: $*" >&2
+exit 1
